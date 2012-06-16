@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="contents.page3">
+  <children>
+    <ImageView fx:id="p0" fitHeight="600.0" fitWidth="800.0" preserveRatio="true">
+      <image>
+        <Image url="@page3.jpg" preserveRatio="false" smooth="false" />
+      </image>
+    </ImageView>
+    <Text fx:id="p1" fill="WHITE" layoutX="551.0" layoutY="321.0" stroke="WHITE" text="日は西に">
+      <font>
+        <Font size="64.0" fx:id="x1" />
+      </font>
+    </Text>
+    <Text fx:id="p2" fill="WHITE" font="$x1" layoutX="405.0" layoutY="395.0" stroke="WHITE" text="そして日は沈む" />
+  </children>
+</AnchorPane>

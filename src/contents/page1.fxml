@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="contents.page1">
+  <children>
+    <ImageView fx:id="p0" fitHeight="600.0" fitWidth="800.0" preserveRatio="true">
+      <image>
+        <Image url="@page1.jpg" preserveRatio="false" smooth="false" />
+      </image>
+    </ImageView>
+    <Text id="p1" fx:id="p1" fill="WHITE" layoutX="564.0" layoutY="525.0" stroke="WHITE" text="海へ...">
+      <font>
+        <Font size="64.0" />
+      </font>
+    </Text>
+  </children>
+</AnchorPane>
