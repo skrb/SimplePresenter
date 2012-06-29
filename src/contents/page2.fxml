@@ -10,15 +10,22 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="contents.page2">
   <children>
-    <ImageView fx:id="p0" fitHeight="600.0" fitWidth="800.0" preserveRatio="true">
+    <ImageView fx:id="p0" fitHeight="600.0" fitWidth="800.0" layoutX="1.0" preserveRatio="true">
       <image>
         <Image url="@page2.jpg" preserveRatio="false" smooth="false" />
       </image>
     </ImageView>
-    <Text fx:id="p1" fill="WHITE" layoutX="332.0" layoutY="530.0" stroke="WHITE" text="どこまでも">
+    <Text fx:id="p1" fill="WHITE" layoutX="64.0" layoutY="127.0" stroke="WHITE" text="Fade In">
       <font>
         <Font size="64.0" />
       </font>
     </Text>
+    <Text id="p2" fx:id="p2" fill="WHITE" layoutX="271.0" layoutY="217.0" stroke="WHITE" text="Slide In">
+      <font>
+        <Font size="56.0" fx:id="x1" />
+      </font>
+    </Text>
+    <Text id="p3" fx:id="p3" fill="WHITE" font="$x1" layoutX="271.0" layoutY="303.0" stroke="WHITE" text="Expand" />
+    <Text id="p4" fx:id="p4" fill="WHITE" font="$x1" layoutX="164.0" layoutY="394.0" stroke="WHITE" text="Rotate&amp;Expand" />
   </children>
 </AnchorPane>

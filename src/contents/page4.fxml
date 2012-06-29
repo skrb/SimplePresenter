@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="contents.page4">
+  <children>
+    <ImageView fx:id="p0" fitHeight="600.0" fitWidth="800.0" layoutX="1.0" preserveRatio="true">
+      <image>
+        <Image url="@page4.jpg" preserveRatio="false" smooth="false" />
+      </image>
+    </ImageView>
+    <Text fx:id="p1" fill="WHITE" layoutX="64.0" layoutY="125.0" stroke="WHITE" text="Conclusion">
+      <font>
+        <Font size="64.0" />
+      </font>
+    </Text>
+    <Text fx:id="p2" fill="WHITE" layoutX="39.0" layoutY="217.0" stroke="WHITE" text="SimplePresenter is very simple.">
+      <font>
+        <Font size="48.0" fx:id="x1" />
+      </font>
+    </Text>
+    <Text fx:id="p3" fill="WHITE" font="$x1" layoutX="157.0" layoutY="298.0" stroke="WHITE" text="However, it is usefull!" />
+    <Text id="p4" fx:id="p4" fill="WHITE" font="$x1" layoutX="314.0" layoutY="415.0" stroke="WHITE" text="Have Fun!" />
+    <ImageView fx:id="p5" fitHeight="150.0" fitWidth="200.0" layoutX="146.0" layoutY="341.0" preserveRatio="true" />
+  </children>
+</AnchorPane>

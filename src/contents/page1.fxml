@@ -15,10 +15,26 @@
         <Image url="@page1.jpg" preserveRatio="false" smooth="false" />
       </image>
     </ImageView>
-    <Text id="p1" fx:id="p1" fill="WHITE" layoutX="564.0" layoutY="525.0" stroke="WHITE" text="海へ...">
+    <Text fx:id="p1" fill="WHITE" layoutX="77.0" layoutY="145.0" stroke="WHITE" text="SimplePresenter">
       <font>
         <Font size="64.0" />
       </font>
     </Text>
+    <Pane fx:id="p2" prefHeight="600.0" prefWidth="800.0">
+      <children>
+        <Text id="p1" fill="WHITE" layoutX="93.0" layoutY="123.0" stroke="WHITE" text="Agenda">
+          <font>
+            <Font size="56.0" />
+          </font>
+        </Text>
+        <Text id="p1" fill="WHITE" layoutX="153.0" layoutY="223.0" stroke="WHITE" text="SimplePage">
+          <font>
+            <Font size="48.0" fx:id="x1" />
+          </font>
+        </Text>
+        <Text id="p1" fill="WHITE" font="$x1" layoutX="153.0" layoutY="307.0" stroke="WHITE" text="Seemless Demo" />
+        <Text id="p1" fill="WHITE" font="$x1" layoutX="153.0" layoutY="389.0" stroke="WHITE" text="Conclusion" />
+      </children>
+    </Pane>
   </children>
 </AnchorPane>

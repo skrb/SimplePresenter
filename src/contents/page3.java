@@ -3,18 +3,23 @@ package contents;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
-import javafx.animation.FillTransition;
-import javafx.animation.SequentialTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import javax.script.ScriptContext;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineFactory;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import net.javainthebox.jfx.simplepresenter.PageController;
-import net.javainthebox.jfx.simplepresenter.SimplePresenter;
 
 public class page3 implements PageController, Initializable {
 
@@ -28,14 +33,39 @@ public class page3 implements PageController, Initializable {
     Text p1;
     
     @FXML
-    Text p2;
+    Button p2;
+    
+    @FXML
+    TextArea p3;
+
+    @FXML
+    Button p4;
     
     private int index = 0;
 
+    // Javaをコンパイルして、実行するためのスクリプトエンジン
+    private ScriptEngine engine;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ScriptEngineManager manager = new ScriptEngineManager();
+        engine = manager.getEngineByName("java");
+        ScriptContext context = engine.getContext();
+        // メインクラスとファイル名を設定
+        context.setAttribute("mainClass",
+                "AnimationDemo",
+                ScriptContext.ENGINE_SCOPE);
+        context.setAttribute(ScriptEngine.FILENAME,
+                "AnimationDemo.java",
+                ScriptContext.ENGINE_SCOPE);
+        
         p1.setOpacity(0.0);
         p2.setOpacity(0.0);
+        p2.setDisable(true);
+        p3.setOpacity(0.0);
+        p3.setDisable(true);
+        p4.setOpacity(0.0);
+        p4.setDisable(true);
     }
 
     @Override
@@ -43,42 +73,83 @@ public class page3 implements PageController, Initializable {
         switch (index) {
             case 0:
                 FadeTransition fadein = new FadeTransition(new Duration(1000L));
-                fadein.setNode(p1);
+                fadein.setNode(p2);
                 fadein.setToValue(1.0);
+                fadein.setOnFinished(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        p2.setDisable(false);
+                    }
+                });
                 fadein.play();
                 index++;
 
                 return true;
             case 1:
-                FadeTransition fadein2 = new FadeTransition(new Duration(1000L));
-                fadein2.setNode(p2);
-                fadein2.setToValue(1.0);
-                fadein2.play();
+                FadeTransition fadeout = new FadeTransition(new Duration(500L));
+                fadeout.setNode(p2);
+                fadeout.setToValue(0.0);
+                fadeout.setOnFinished(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        p2.setDisable(true);
+                    }
+                });
+                fadeout.play();
                 
+                fadein = new FadeTransition(new Duration(1000L));
+                fadein.setNode(p3);
+                fadein.setToValue(1.0);
+                fadein.setOnFinished(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        p3.setDisable(false);
+                    }
+                });
+                fadein.play();
+                
+                fadein = new FadeTransition(new Duration(1000L));
+                fadein.setNode(p4);
+                fadein.setToValue(1.0);
+                fadein.setOnFinished(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        p4.setDisable(false);
+                    }
+                });
+                fadein.play();
+
                 index++;
 
                 return true;
             case 2:
-                Rectangle rect = new Rectangle(0.0, 0.0, SimplePresenter.WIDTH, SimplePresenter.HEIGHT);
-                rect.setFill(null);
-                pane.getChildren().add(rect);
-                
-                FillTransition fill
-                        = new FillTransition(new Duration(5000L), rect,
-                                             Color.rgb(0x00, 0x00, 0x00, 0.0), Color.web("#000033"));
-                
-                FadeTransition fadeout = new FadeTransition(new Duration(1000L));
-                fadeout.setNode(pane);
-                fadeout.setToValue(0.0);
-                
-                SequentialTransition sequential = new SequentialTransition(fill, fadeout);
-                sequential.play();
-                
-                index++;
-                
-                return true;
             default:
                 return false;
+        }
+    }
+
+    @Override
+    public void doPageEnteredAction() {
+        FadeTransition fadein = new FadeTransition(new Duration(1000L));
+        fadein.setNode(p1);
+        fadein.setToValue(1.0);
+        fadein.play();
+    }
+    
+    public void executeDemo(ActionEvent event) {
+        // デモの実行
+        AnimationDemo demo = new AnimationDemo();
+        Stage stage = new Stage();
+        demo.start(stage);
+    }
+
+    public void compileAndExecuteDemo(ActionEvent event) {
+        try {
+            // スクリプトの実行
+            engine.eval(p3.getText());
+        } catch (ScriptException ex) {
+            System.err.println("スクリプトの実行に失敗しました");
+            ex.printStackTrace();
         }
     }
 }

@@ -15,11 +15,17 @@
         <Image url="@page3.jpg" preserveRatio="false" smooth="false" />
       </image>
     </ImageView>
-    <Text fx:id="p1" fill="WHITE" layoutX="551.0" layoutY="321.0" stroke="WHITE" text="日は西に">
+    <Text fx:id="p1" fill="WHITE" layoutX="49.0" layoutY="97.0" stroke="WHITE" text="Seemless Demo">
       <font>
         <Font size="64.0" fx:id="x1" />
       </font>
     </Text>
-    <Text fx:id="p2" fill="WHITE" font="$x1" layoutX="405.0" layoutY="395.0" stroke="WHITE" text="そして日は沈む" />
+    <Button fx:id="p2" layoutX="335.0" layoutY="127.0" mnemonicParsing="false" onAction="#executeDemo" text="Execute">
+      <font>
+        <Font size="24.0" fx:id="x2" />
+      </font>
+    </Button>
+    <TextArea fx:id="p3" layoutX="26.0" layoutY="201.0" prefHeight="364.0" prefWidth="497.0" style="-fx-font-size: 16px;" text="import javafx.animation.Animation;&#10;import javafx.animation.Interpolator;&#10;import javafx.animation.RotateTransition;&#10;import javafx.scene.Group;&#10;import javafx.scene.Scene;&#10;import javafx.scene.image.Image;&#10;import javafx.scene.image.ImageView;&#10;import javafx.stage.Stage;&#10;import javafx.util.Duration;&#10;&#10;public class AnimationDemo {&#10;    public void start(Stage stage) {&#10;        Group root = new Group();&#10;        Scene scene = new Scene(root, 600, 500);&#10;        &#10;        ImageView image = new ImageView(new Image(&quot;contents/DukeWithHelmet.png&quot;));&#10;        image.setLayoutX(50); image.setLayoutY(20);&#10;        root.getChildren().add(image);&#10;        &#10;        RotateTransition rotate&#10;            = new RotateTransition(new Duration(3000));&#10;        rotate.setNode(image);&#10;        rotate.setToAngle(360);&#10;        rotate.setAutoReverse(true);&#10;        rotate.setCycleCount(Animation.INDEFINITE);&#10;        rotate.setInterpolator(Interpolator.EASE_BOTH);&#10;        rotate.play();&#10;        &#10;        stage.setScene(scene);&#10;        stage.show();&#10;    }&#10;    &#10;    public static void main(String[] args) {&#10;        AnimationDemo demo = new AnimationDemo();&#10;        Stage stage = new Stage();&#10;        demo.start(stage);&#10;    }&#10;}" />
+    <Button fx:id="p4" font="$x2" layoutX="537.0" layoutY="203.0" mnemonicParsing="false" onAction="#compileAndExecuteDemo" text="Compile&amp;Execute" />
   </children>
 </AnchorPane>
